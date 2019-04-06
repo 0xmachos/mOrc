@@ -1,0 +1,8 @@
+# .travis.yml
+
+language: shell
+script:
+  - shellcheck mo.rc
+notifications:
+  email: false
+
