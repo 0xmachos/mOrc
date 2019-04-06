@@ -1,6 +1,28 @@
 #!/bin/sh
 # mo.rc
 
+
+
+# ~~~ User Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# The user functions are designed to be called by the o.rc users.
+#
+
+getusers () {
+  echo "Currently logged in users:"
+  users
+}
+
+
+gethelp() {
+echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
+echo "[*] getusers - get currently logged in users"
+}
+
+
+# ~~~ Main ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+
 unset HISTFILE
 HISTSIZE=0
 umask 002
