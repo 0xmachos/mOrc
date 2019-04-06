@@ -1,4 +1,7 @@
 # mOrc
+
+[![Build Status](https://travis-ci.com/0xmachos/mOrc.svg?branch=master)](https://travis-ci.com/0xmachos/mOrc)
+
 mOrc is a post-exploitation framework for macOS written in Bash
 
 Based on and inspired by [zMarch/Orc](https://github.com/zMarch/Orc) a "post-exploitation framework for Linux written in Bash".
