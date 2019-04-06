@@ -1,0 +1,32 @@
+#!/bin/sh
+# mo.rc
+
+unset HISTFILE
+HISTSIZE=0
+umask 002
+
+echo "coredumps disabled by ulimit"
+# shellcheck disable=SC2039
+# ulimit -c works on macOS
+ulimit -c 0
+
+echo "=========== Info ==========="
+echo "Short host info:"
+echo "  Arch:   $(uname -m)"
+echo "  Kernel: $(uname -r)"
+echo "  OS:     $(sw_vers -productVersion)" 
+
+echo "IP address on the network: "
+ifconfig | grep inet | grep -v inet6 | awk -F " " '{ print $2 }' | grep -v 127 
+
+echo "We are uid $(id -u) - $(whoami | tr -d '\n')"
+
+# echo "Machine has been "
+# uptime 
+
+echo "============================"
+echo "=== Welcome to mOrc Shell ==="
+echo "Run gethelp to see a list of commands."
+echo "$HOME should be deleted upon exit."
+
+PS1="\\[\\033]0;\\007\\]\\u on \\h in \\w \\n\\$ ";
