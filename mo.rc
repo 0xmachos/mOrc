@@ -53,6 +53,7 @@ echo "We are uid $(id -u) - $(whoami | tr -d '\n')"
 
 # echo "Machine has been "
 # uptime 
+echo "Hardware UUID: $(system_profiler SPHardwareDataType | grep 'UUID' | awk '{print $3}')"
 
 echo "============================"
 echo "=== Welcome to mOrc Shell ==="
