@@ -13,10 +13,18 @@ getusers () {
   users
 }
 
+getspec () {
+  echo "CPU Model: $(sysctl -n machdep.cpu.brand_string)"
+  echo "Number of Cores: $(sysctl -n machdep.cpu.core_count)"
+  echo "Disk Usage:"
+  df -aPH
+}
+
 
 gethelp() {
 echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
 echo "[*] getusers - get currently logged in users"
+echo "[*] getspec - get some hardware information"
 }
 
 
