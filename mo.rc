@@ -20,6 +20,12 @@ getspec () {
   df -aPH
 }
 
+getfv () {
+  # Check if FileVault is enabled
+  # https://github.com/0xmachos/mOrc/issues/3
+  fdesetup status
+}
+
 getip () {
   # Get the external IP Address
   # Use Akamai and Google because they're gonna look less dodgy in SOC's lolgs
@@ -32,6 +38,7 @@ gethelp() {
 echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
 echo "[*] getusers  -  get currently logged in users"
 echo "[*] getspec   -  get some hardware information"
+echo "[*] getfv     -  check if FileVault is enabled"
 echo "[*] getip     -  get external IP from Akamai and Google (HTTP and DNS)"
 }
 
