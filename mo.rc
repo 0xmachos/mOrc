@@ -15,6 +15,14 @@ getusers () {
   users
 }
 
+getallusers () {
+  # List all local user accounts
+  # Doesn't include system accounts
+  echo "User                    UID"
+  echo "---------------------------"
+  dscl . list /Users UniqueID | grep -v '_'
+}
+
 getspec () {
   # Get some basic system info 
   # TODO: Free RAM
@@ -72,6 +80,7 @@ echo "[*] getspec   -  get some hardware information"
 echo "[*] getfv     -  check if FileVault is enabled"
 echo "[*] getip     -  get external IP from Akamai and Google (HTTP and DNS)"
 echo "[*] getjail   -  check if we're in a chroot/VM"
+echo "[*] getallusers  -  list all local user accounts"
 }
 
 
