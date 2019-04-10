@@ -37,6 +37,33 @@ getip () {
   echo "DNS says:  $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | tr -d \")"
 }
 
+getjail () {
+  # Check if we're in a VM, running on a Hypervisor or in a chroot
+  # TODO: Hypervisor and chroot check
+
+  jail=0
+  echo "Checking to see if we're in one giant simulation..."
+
+  if kextstat | grep -q 'com.vmware.kext.VMwareGfx' || kextstat | grep -q 'com.vmware.kext.vmhgfs'; then
+    # Check for loaded VMWare Kexts 
+    # This check will only work if VMWare Tools is installed
+    jail="VMWare"
+  fi 
+
+  if system_profiler SPHardwareDataType | grep -q 'VMware' || system_profiler SPHardwareDataType | grep -q 'Virtual Machine' ; then
+    # From SPHardwareDataType we can query Model Identifier or Apple ROM Info
+    # Example values for these fields:
+    # Model Identifier: VMware 7,1
+    # Apple ROM Info: [MS_VM_CERT/SHA1/...]Welcome to the Virtual Machine
+    jail="VMware"
+  fi
+
+  if [[ "${jail}" == "VMware" ]]; then
+    echo "VMWare Virtual Machine"
+  else
+    echo "Bare Metal!"
+  fi
+}
 
 gethelp() {
 echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
@@ -44,6 +71,7 @@ echo "[*] getusers  -  get currently logged in users"
 echo "[*] getspec   -  get some hardware information"
 echo "[*] getfv     -  check if FileVault is enabled"
 echo "[*] getip     -  get external IP from Akamai and Google (HTTP and DNS)"
+echo "[*] getjail   -  check if we're in a chroot/VM"
 }
 
 
