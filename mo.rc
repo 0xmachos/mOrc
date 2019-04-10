@@ -58,7 +58,7 @@ getjail () {
     jail="VMware"
   fi
 
-  if [[ "${jail}" == "VMware" ]]; then
+  if [ "${jail}" = "VMware" ]; then
     echo "VMWare Virtual Machine"
   else
     echo "Bare Metal!"
