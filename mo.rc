@@ -20,11 +20,19 @@ getspec () {
   df -aPH
 }
 
+getip () {
+  # Get the external IP Address
+  # Use Akamai and Google because they're gonna look less dodgy in SOC's lolgs
+  echo "HTTP says: $(curl --silent --insecure -- 'https://whatismyip.akamai.com')"
+  echo "DNS says:  $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | tr -d \")"
+}
+
 
 gethelp() {
 echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
 echo "[*] getusers - get currently logged in users"
 echo "[*] getspec - get some hardware information"
+echo "[*] getip     -  get external IP from Akamai and Google (HTTP and DNS)"
 }
 
 
