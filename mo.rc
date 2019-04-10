@@ -9,11 +9,15 @@
 #
 
 getusers () {
+  # List login names of users currently logged into the system
+  # TODO: Can we parse /var/run/utmpx to extract users TTYs?
   echo "Currently logged in users:"
   users
 }
 
 getspec () {
+  # Get some basic system info 
+  # TODO: Free RAM
   echo "CPU Model: $(sysctl -n machdep.cpu.brand_string)"
   echo "Number of Cores: $(sysctl -n machdep.cpu.core_count)"
   echo "Disk Usage:"
