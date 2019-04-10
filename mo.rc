@@ -61,7 +61,7 @@ echo "  Arch:   $(uname -m)"
 echo "  Kernel: $(uname -r)"
 echo "  OS:     $(sw_vers -productVersion)" 
 
-echo "IP address on the network: "
+echo "IP address(s) on the network: "
 ifconfig | grep inet | grep -v inet6 | awk -F " " '{ print $2 }' | grep -v 127 
 
 echo "We are uid $(id -u) - $(whoami | tr -d '\n')"
