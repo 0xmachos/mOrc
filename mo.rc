@@ -30,8 +30,8 @@ getip () {
 
 gethelp() {
 echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
-echo "[*] getusers - get currently logged in users"
-echo "[*] getspec - get some hardware information"
+echo "[*] getusers  -  get currently logged in users"
+echo "[*] getspec   -  get some hardware information"
 echo "[*] getip     -  get external IP from Akamai and Google (HTTP and DNS)"
 }
 
