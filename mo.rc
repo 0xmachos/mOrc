@@ -78,6 +78,7 @@ getjail () {
   if [ "${jail}" = "VMware" ]; then
     echo "VMWare Virtual Machine"
   elif [ "${jail}" = "chroot" ]; then
+    echo "We're in a chroot"
   else
     echo "Bare Metal!"
   fi
