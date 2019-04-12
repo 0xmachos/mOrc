@@ -47,7 +47,7 @@ getip () {
 
 getjail () {
   # Check if we're in a VM, running on a Hypervisor or in a chroot
-  # TODO: Hypervisor and chroot check
+  # TODO: Hypervisor, generic VM, VirtualBox
 
   jail=0
   echo "Checking to see if we're in one giant simulation..."
@@ -66,8 +66,16 @@ getjail () {
     jail="VMware"
   fi
 
+  if ls -di / | grep '2'; then
+    # Check if we're in a chroot
+    # TODO: Should work but needs tested
+    jail="chroot"
+  fi
+
+
   if [ "${jail}" = "VMware" ]; then
     echo "VMWare Virtual Machine"
+  elif [ "${jail}" = "chroot" ]; then
   else
     echo "Bare Metal!"
   fi
