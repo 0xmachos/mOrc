@@ -85,7 +85,7 @@ getjail () {
 }
 
 gethelp() {
-echo "A probably non-comprehensive list of functionality in Orc v$OVERSION."
+echo "A probably non-comprehensive list of functionality in mOrc"
 echo "[*] getusers     -  get currently logged in users"
 echo "[*] getallusers  -  list all local user accounts"
 echo "[*] getspec      -  get some hardware information"
