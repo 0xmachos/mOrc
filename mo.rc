@@ -120,7 +120,9 @@ echo "We are uid $(id -u) - $(whoami | tr -d '\n')"
 
 # echo "Machine has been "
 # uptime 
-echo "Hardware UUID: $(system_profiler SPHardwareDataType | grep 'UUID' | awk '{print $3}')"
+
+echo "Hardware UUID: $(ioreg -d2 -c IOPlatformExpertDevice | awk -F\" '/IOPlatformUUID/{print $(NF-1)}')"
+# https://apple.stackexchange.com/a/342043
 
 echo "============================"
 echo "=== Welcome to mOrc Shell ==="
