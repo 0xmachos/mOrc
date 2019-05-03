@@ -66,6 +66,12 @@ getjail () {
     jail="VMware"
   fi
 
+  if ioreg | grep "VMware"; then
+    # Detects the virtual USB hubs, SATA controllers, etc 
+    # Works without VMware tools installed
+    jail="VMware"
+  fi
+
   # shellcheck disable=SC2010
   # We dont need a glob, we dont care about non-alphanumeric filenames
   if ls -di / | grep '2'; then
