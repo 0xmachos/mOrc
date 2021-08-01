@@ -135,5 +135,5 @@ echo "=== Welcome to mOrc Shell ==="
 echo "Run gethelp to see a list of commands."
 echo "$HOME should be deleted upon exit."
 
-PS1="\\[\\033]0;\\007\\]\\u on \\h in \\w \\n\\$ ";
+PS1='%n %~ $ '
 
